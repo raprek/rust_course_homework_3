@@ -26,8 +26,8 @@ pub fn split_slice_by_nth<T>(in_slice: &[T], n: usize) -> (&[T], &[T]) {
 pub fn split_slice_by_four_slices<T>(in_slice: &[T]) -> [&[T]; 4] {
     let mut res: [&[T]; 4] = [&[]; 4];
     let (k, m) = (in_slice.len() / 4, in_slice.len() % 4);
-    for i  in 0..4 {
-        res[i] = &in_slice[i*k+std::cmp::min(i, m)..(i+1)*k + std::cmp::min(i + 1, m)];
+    for i in 0..4 {
+        res[i] = &in_slice[i * k + std::cmp::min(i, m)..(i + 1) * k + std::cmp::min(i + 1, m)];
     }
     res
 }
@@ -70,8 +70,6 @@ mod tests {
         get_nth_from_tail(&[1, 2, 3], 3);
     }
 
-
-
     #[test]
     fn test_split_slice_by_nth() {
         let slice = &[1, 2, 3];
@@ -99,7 +97,6 @@ mod tests {
         assert_eq!(res_p2, []);
         assert_eq!(res_p3, []);
         assert_eq!(res_p4, []);
-
 
         // test not equal parts
         let slice = &[1, 2, 3, 4, 5, 6];
